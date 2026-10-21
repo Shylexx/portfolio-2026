@@ -1,0 +1,22 @@
+---
+// This extracts the frontmatter data from your Markdown file
+const { frontmatter } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <title>{frontmatter.title}</title>
+  </head>
+  <body>
+    <main>
+      <h1>{frontmatter.title}</h1>
+      <p><em>{frontmatter.description}</em></p>
+      <hr />
+      
+      <!-- This slot is where your Markdown content gets injected -->
+      <slot />
+      
+      <a href="/">← Back to Home</a>
+    </main>
+  </body>
+</html>

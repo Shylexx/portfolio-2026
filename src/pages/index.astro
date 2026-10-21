@@ -1,11 +1,17 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Grabs every markdown file in the projects folder
+const projects = Object.values(import.meta.glob('./projects/*.md', { eager: true }));
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+  <body>
+    <h1>My Portfolio</h1>
+    <ul>
+      {projects.map((project: any) => (
+        <li>
+          <a href={project.url}>{project.frontmatter.title}</a>
+        </li>
+      ))}
+    </ul>
+  </body>
+</html>
